@@ -2,7 +2,7 @@ QC1-DropletUtils
 ================
 2025-07-18
 
-## QC thresholds should be vary data to data
+## QC thresholds should be vary from data to data
 ## These various threshold can be determined by visual inspection (drawing histogram, ...)
 
 ### QC1 Remove Empty Droplets
