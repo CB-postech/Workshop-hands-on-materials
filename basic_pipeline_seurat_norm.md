@@ -163,8 +163,9 @@ DimPlot(so, group.by = 'seurat_clusters', reduction = 'umap.harmony', label = TR
 source("/BiO/data/celltypist_in_seurat.R")
 celltypist_in_seurat(so, conda_env = "/BiO/prog/miniforge3/envs/QC", save_path = save_path, model_path = '/BiO/data/Immune_All_High.pkl')
 ```
-<img width="461" height="255" alt="CellTypist_dotplot_celltypist_dotplot_majority_voting" src="https://github.com/user-attachments/assets/72aa95c0-c058-471b-94b5-f1961380f450" />
-![Uploading CellTypist_dotplot_celltypist_dotplot_majority_voting (1).png…]()
+<img width="490" height="255" alt="CellTypist_dotplot_celltypist_dotplot_majority_voting (1)" src="https://github.com/user-attachments/assets/29e4fd8a-2ba5-476a-96b0-311d552f86d4" />
+<img width="461" height="255" alt="CellTypist_dotplot_celltypist_dotplot_majority_voting" src="https://github.com/user-attachments/assets/4eb6995f-ac5e-4b66-b482-5d861ed0b036" />
+
 
 
 ### 6. Marker gene expression visualization
