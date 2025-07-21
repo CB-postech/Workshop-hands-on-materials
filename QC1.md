@@ -3,7 +3,7 @@ QC1-DropletUtils
 2025-07-18
 
 ## QC thresholds should be different data by data
-## There different threshold can be determined by visual inspects (drawing histogram, ...)
+## These different threshold can be determined by visual inspects (drawing histogram, ...)
 
 ### QC1 Remove Empty Droplets
 Many droplets are empty (mainly consist of ambient RNA) <br>
