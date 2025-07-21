@@ -179,10 +179,10 @@ p <- p + theme(axis.text.x = element_text(angle = 90))
 ggsave(p, filename = paste0(save_path, "/dot_plot_markers.png"), width = 10, height = 6)
 
 so$celltype = as.character(so$seurat_clusters)
-so$celltype[so$celltype %in% c(1, 6, 8)] <- 'T cell'
+so$celltype[so$celltype %in% c(0, 5)] <- 'T cell'
 so$celltype[so$celltype %in% c(3)] <- 'NK cell'
-so$celltype[so$celltype %in% c(0, 4, 7)] <- 'Macrophage'
-so$celltype[so$celltype %in% c(2, 5)] <- 'Monocyte'
+so$celltype[so$celltype %in% c(1, 4, 7)] <- 'Macrophage'
+so$celltype[so$celltype %in% c(2, 6)] <- 'Monocyte'
 so$celltype = factor(so$celltype, levels = c('T cell', 'NK cell', 'Macrophage', 'Monocyte'))
 
 p <- DimPlot(so, group.by = 'celltype', reduction = 'umap.harmony', label = TRUE)
