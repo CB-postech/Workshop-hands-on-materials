@@ -59,25 +59,6 @@ so <- NormalizeData(so)
     Normalizing layer: counts
     
 
-
-
-```R
-# scran style
-# To remove cell-specific biases, cells are clustered using quickCluster() and cell-specific size factors are calculated using computeSumFactors() of scran R package. 
-# Raw counts of each cell are divided by cell-specific size factor and log2-transformed with a pseudocount of 1.
-library(scran)
-library(scater)
-
-sce <- as.SingleCellExperiment(so)
-
-clusters <- quickCluster(sce)
-sce <- computeSumFactors(sce, clusters = clusters)
-sce.norm <- logNormCounts(sce,  pseudo_count = 1)
-so <- as.Seurat(sce.norm,
-                    counts = "counts",
-                    data = "logcounts")
-```
-
 ### 2. Batch-aware Feature selection
 In this data, there are multiple studies. <br>
 Therefore, we will select HVG with consideration of the source of data (study). <br>
