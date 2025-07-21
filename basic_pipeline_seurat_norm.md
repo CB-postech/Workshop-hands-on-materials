@@ -17,7 +17,6 @@ library(ggplot2)
 set.seed(42) # for reproducibility
 
 save_path = "basic_pipeline"
-setwd(save_path)
 ```
 
 
