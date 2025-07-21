@@ -125,6 +125,9 @@ p <- ggplot(data.frame(colData(sce)), aes(x = detected)) +
   ylim(0, 500)
 ggsave(filename = paste0(save_path, '/sce5_detected.png'), plot = p, width = 6, height = 6)
 ```
+<img width="1800" height="1800" alt="sce5_MT_pct" src="https://github.com/user-attachments/assets/ab3dcd5d-f8cf-41b3-9fa0-263d115a8349" />
+<img width="1800" height="1800" alt="sce5_detected" src="https://github.com/user-attachments/assets/60fe899e-cbd2-40f8-8b8a-c3fc38de31b0" />
+<img width="1800" height="1800" alt="sce5_log10_sum" src="https://github.com/user-attachments/assets/a507b909-5f9f-4f41-ba89-3396e6c5e2f3" />
 
 Low-quality cells are filtered out and can be identified by the PCA plot.
 
@@ -145,6 +148,7 @@ sce$use <- (
 p <- plotReducedDim(sce, dimred="PCA_coldata", colour_by="use")
 ggsave(filename = paste0(save_path, '/sce5_PCA_use.png'), plot = p, width = 7, height = 6)
 ```
+<img width="2100" height="1800" alt="sce5_PCA_use" src="https://github.com/user-attachments/assets/6f05b980-1a7a-403f-bc6d-a61327ac1031" />
 
 
 ```R
