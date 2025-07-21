@@ -65,6 +65,7 @@ rawsce_1
 ```
 
 ### Run DropletUtils
+in this simple tutorial, we use same threshold
 
 
 ```R
