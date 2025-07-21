@@ -126,6 +126,10 @@ DimPlot(so, group.by = 'study')
 p <- DimPlot(so, group.by = 'study')
 ggsave(p, filename = paste0(save_path, "/umap_study.png"), width = 8, height = 6)
 ```
+<img width="840" height="840" alt="output_6_0" src="https://github.com/user-attachments/assets/5194a94a-739d-489f-83ef-b8f73fc59e6a" />
+<img width="840" height="840" alt="output_5_3" src="https://github.com/user-attachments/assets/8e7111d0-dcd0-4672-b9ff-67ce22cabdbe" />
+
+
 ### 4. Batch Correction by Harmony
 ref) Korsunsky, I., Millard, N., Fan, J. et al. Fast, sensitive and accurate integration of single-cell data with Harmony. Nat Methods 16, 1289–1296 (2019). https://doi.org/10.1038/s41592-019-0619-0 <br>
 https://portals.broadinstitute.org/harmony/articles/quickstart.html
@@ -149,6 +153,8 @@ ggsave(p, filename = paste0(save_path, "/umap_harmony_seurat_clusters.png"), wid
 DimPlot(so, group.by = 'study', reduction = 'umap.harmony')
 DimPlot(so, group.by = 'seurat_clusters', reduction = 'umap.harmony', label = TRUE)
 ```
+<img width="840" height="840" alt="output_7_4" src="https://github.com/user-attachments/assets/71648fa2-4c2c-482a-90be-128312bcb793" />
+<img width="840" height="840" alt="output_7_3" src="https://github.com/user-attachments/assets/8946998f-6af5-4d7d-9914-e746a6a5f594" />
 
 ### 5. Celltypist Prediction
 
@@ -157,6 +163,8 @@ DimPlot(so, group.by = 'seurat_clusters', reduction = 'umap.harmony', label = TR
 source("/BiO/data/celltypist_in_seurat.R")
 celltypist_in_seurat(so, conda_env = "/BiO/prog/miniforge3/envs/QC", save_path = save_path, model_path = '/BiO/data/Immune_All_High.pkl')
 ```
+<img width="461" height="255" alt="CellTypist_dotplot_celltypist_dotplot_majority_voting" src="https://github.com/user-attachments/assets/72aa95c0-c058-471b-94b5-f1961380f450" />
+![Uploading CellTypist_dotplot_celltypist_dotplot_majority_voting (1).png…]()
 
 
 ### 6. Marker gene expression visualization
@@ -199,6 +207,11 @@ DotPlot(so, features = unlist(marker.genes), group.by = 'seurat_clusters') + the
 DimPlot(so, group.by = 'celltype', reduction = 'umap.harmony', label = TRUE)
 DotPlot(so, features = as.vector(unlist(marker.genes)), group.by = 'celltype') + theme(axis.text.x = element_text(angle = 90))
 ```
+<img width="840" height="840" alt="output_11_4" src="https://github.com/user-attachments/assets/604ae2c7-39da-4916-ab6e-dffbefe49e70" />
+<img width="840" height="840" alt="output_11_3" src="https://github.com/user-attachments/assets/dbcaaa74-9603-4a24-9d12-c5f95d0185ae" />
+<img width="840" height="840" alt="output_11_1" src="https://github.com/user-attachments/assets/a1dc38a9-167e-4b66-8550-91a0c0da98af" />
+<img width="840" height="840" alt="output_11_0" src="https://github.com/user-attachments/assets/7c1ad12e-b1c3-4c46-9515-443374974284" />
+
 
 ### 7. Patient-aware DEG selection
 
@@ -234,3 +247,6 @@ p <- EnhancedVolcano(DEG.patient.correction,
     pCutoff = 0.05)
 ggsave(p, filename = paste0(save_path, "/volcano_Tcells_patient_correction.png"), width = 8, height = 6)
 ```
+<img width="840" height="840" alt="output_14_1" src="https://github.com/user-attachments/assets/22a4d5de-249b-4af5-b507-f7f0e2e63527" />
+<img width="840" height="840" alt="output_14_0" src="https://github.com/user-attachments/assets/838275d4-8cae-4490-9849-ba2894d7a3cb" />
+
