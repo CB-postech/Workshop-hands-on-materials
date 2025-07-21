@@ -50,8 +50,7 @@ sce.norm <- logNormCounts(sce,  pseudo_count = 1)
 library(Seurat)
 so <- as.Seurat(sce.norm,
                     counts = "counts",
-                    data = "logcounts",
-                    assay = "RNA")
+                    data = "logcounts")
 
 so$disease = meta.data[Cells(so), 'disease']
 so$study = meta.data[Cells(so), 'study']
