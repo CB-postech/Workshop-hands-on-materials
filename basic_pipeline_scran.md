@@ -135,6 +135,7 @@ https://portals.broadinstitute.org/harmony/articles/quickstart.html
 
 
 ```R
+library(harmony)
 so <- RunHarmony(so, 'study')
 so <- FindNeighbors(so, reduction = "harmony")
 so <- FindClusters(so, resolution = 0.5) 
