@@ -105,6 +105,7 @@ for (i in 1:length(rawsce_list)) {
   assign(paste0('DropletUtils_', rawsce_list[i]), rawsce)
 }
 ```
+<img width="1800" height="1800" alt="image" src="https://github.com/user-attachments/assets/25285f61-2a6a-4c6f-99ca-636bfdb49a7e" />
 
 
 ```R
