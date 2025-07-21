@@ -96,11 +96,11 @@ HVG = read.csv(paste0(save_path, "/hvg_", nHVG, "_", batch_key, ".csv"))
 # > head(HVG)
 #         gene
 # 1        A2M
-# 2       AACS
-# 3 AARS.AARS1
-# 4      ABCA1
-# 5     ABCA13
-# 6      ABCA2
+# 2       ABAT
+# 3      ABCA1
+# 4      ABCA2
+# 5      ABCA6
+# 6      ABCB1
 ```
 
 ### 3. Dimensionality Reduction
