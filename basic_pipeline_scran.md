@@ -11,12 +11,12 @@
 
 
 ```R
-library(Seurat)
-library(harmony)
+library(scran)
+library(scater)
 library(ggplot2)
 set.seed(42) # for reproducibility
 
-save_path = "basic_pipeline"
+save_path = "basic_pipeline_scran"
 setwd(save_path)
 ```
 
@@ -31,51 +31,35 @@ In this example, we will use the sampled data
 count_matrix <- read.csv("/BiO/data/process/basic_pipeline_data/HLCA_pulmonary_fibrosis_immune_raw.csv", row.names = 1)
 meta.data <- read.csv("/BiO/data/process/basic_pipeline_data/HLCA_pulmonary_fibrosis_immune_meta.csv", row.names = 1)
 
-so <- CreateSeuratObject(counts = count_matrix, meta.data = meta.data, assay = 'RNA', min.cells = 0, min.features = 0, project = 'HLCA_Pulmonary_Fibrosis_immune')
-# genes are in rows, cells are in columns
-
-# so stand for 's'eurat 'o'bject
-# In this example, we use filtered data, so set min.cells and min.features to 0 (no filtering)
-
-# > head(so, n = 3)
-#                                                      orig.ident nCount_RNA nFeature_RNA            disease                 study
-# F01173_GCTGGGTTCCTGTAGA_haberman HLCA_Pulmonary_Fibrosis_immune       5525         1877 pulmonary fibrosis Banovich_Kropski_2020
-# F00431_CTAGAGTCATGCCACG_haberman HLCA_Pulmonary_Fibrosis_immune       2784         1017 pulmonary fibrosis Banovich_Kropski_2020
-# F01172_AGTAGTCGTCCGACGT_haberman HLCA_Pulmonary_Fibrosis_immune       1617         1012 pulmonary fibrosis Banovich_Kropski_2020
+sce <- SingleCellExperiment(list(counts=count_matrix))
 ```
-
-    Warning message:
-    “Data is of class data.frame. Coercing to dgCMatrix.”
 
 
 ### 1. Normalization
 
 
 ```R
-# seurat style
-so <- NormalizeData(so)
-```
-
-    Normalizing layer: counts
-    
-
-
-
-```R
 # scran style
 # To remove cell-specific biases, cells are clustered using quickCluster() and cell-specific size factors are calculated using computeSumFactors() of scran R package. 
 # Raw counts of each cell are divided by cell-specific size factor and log2-transformed with a pseudocount of 1.
-library(scran)
-library(scater)
-
-sce <- as.SingleCellExperiment(so)
 
 clusters <- quickCluster(sce)
 sce <- computeSumFactors(sce, clusters = clusters)
 sce.norm <- logNormCounts(sce,  pseudo_count = 1)
+
+library(Seurat)
 so <- as.Seurat(sce.norm,
                     counts = "counts",
-                    data = "logcounts")
+                    data = "logcounts",
+                    assay = "RNA")
+
+so$disease = meta.data[Cells(so), 'disease']
+so$study = meta.data[Cells(so), 'study']
+
+# change assay name
+so[['RNA']] = so[['originalexp']]
+DefaultAssay(so) = 'RNA'
+so[['originalexp']] = NULL
 ```
 
 ### 2. Batch-aware Feature selection
